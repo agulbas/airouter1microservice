@@ -1,0 +1,63 @@
+version: '3.9'
+
+services:
+  gateway-api:
+    build:
+      context: ..
+      dockerfile: services/Gateway.Api/Dockerfile
+    container_name: gateway-api
+    ports:
+      - "8080:8080"
+    environment:
+      Services__RouterBaseUrl: http://router-service:8080
+    depends_on:
+      - router-service
+
+  router-service:
+    build:
+      context: ..
+      dockerfile: services/Router.Service/Dockerfile
+    container_name: router-service
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      AgentRoutes__FlightSearchUrl: http://flight-agent-service:8080/agent/query
+      AgentRoutes__HotelSearchUrl: http://hotel-agent-service:8080/agent/query
+      AgentRoutes__ItineraryPlanningUrl: http://itinerary-agent-service:8080/agent/query
+      AgentRoutes__RestaurantRecommendationUrl: http://restaurant-agent-service:8080/agent/query
+    depends_on:
+      - flight-agent-service
+      - hotel-agent-service
+      - itinerary-agent-service
+      - restaurant-agent-service
+
+  flight-agent-service:
+    build:
+      context: ..
+      dockerfile: services/FlightAgent.Service/Dockerfile
+    container_name: flight-agent-service
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+
+  hotel-agent-service:
+    build:
+      context: ..
+      dockerfile: services/HotelAgent.Service/Dockerfile
+    container_name: hotel-agent-service
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+
+  itinerary-agent-service:
+    build:
+      context: ..
+      dockerfile: services/ItineraryAgent.Service/Dockerfile
+    container_name: itinerary-agent-service
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+
+  restaurant-agent-service:
+    build:
+      context: ..
+      dockerfile: services/RestaurantAgent.Service/Dockerfile
+    container_name: restaurant-agent-service
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
