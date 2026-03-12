@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <AssemblyName>AiRouter.RestaurantAgent.Service</AssemblyName>
+    <RootNamespace>AiRouter.RestaurantAgent.Service</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../shared/Contracts/Contracts.csproj" />
+    <ProjectReference Include="../../shared/Models/Models.csproj" />
+    <ProjectReference Include="../../shared/LLM/LLM.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>AiRouter.Shared.Models</AssemblyName>
+    <RootNamespace>AiRouter.Shared.Models</RootNamespace>
+  </PropertyGroup>
+</Project>

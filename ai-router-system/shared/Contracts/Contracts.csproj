@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>AiRouter.Shared.Contracts</AssemblyName>
+    <RootNamespace>AiRouter.Shared.Contracts</RootNamespace>
+  </PropertyGroup>
+</Project>
